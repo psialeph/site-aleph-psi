@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aleph Menezes | Psicólogo CRP 10/10633 - Especialista em Relacionamentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3a506b;
+            --secondary: #5bc0be;
+            --accent: #1c2541;
+            --light: #edf2f4;
+            --dark: #2b2d42;
+            --success: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-left: 10px;
+        }
+        
+        .crp-info {
+            font-size: 0.9rem;
+            color: var(--dark);
+            margin-top: 5px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(28, 37, 65, 0.85), rgba(28, 37, 65, 0.85)), url('https://images.unsplash.com/photo-1530790359200-b1faff66758f?ixlib=rb-4.0.3') center/cover no-repeat;
+            color: white;
+            padding: 8rem 0 5rem;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--accent);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #48a8a7;
+            transform: translateY(-3px);
+        }
+        
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            margin-left: 15px;
+        }
+        
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .specialization {
+            background-color: #f0f9f9;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background-color: #f5f7fa;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Approach Section */
+        .approach {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .approach-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .approach-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .approach-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            min-width: 60px;
+        }
+        
+        .approach-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Plans Section */
+        .plans {
+            padding: 5rem 0;
+            background-color: #f5f7fa;
+        }
+        
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .plan-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .plan-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .plan-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .plan-body {
+            padding: 2rem;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .plan-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .plan-features li i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+        
+        .plan-note {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--secondary);
+        }
+        
+        .plan-button {
+            text-align: center;
+        }
+        
+        .plan-disclaimer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Ethics Section */
+        .ethics {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .ethics-content {
+            background-color: #f5f7fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+        
+        .ethics-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .ethics-item h3 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 5rem 0;
+            background-color: #f5f7fa;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .contact-details {
+            list-style: none;
+        }
+        
+        .contact-details li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details li i {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-right: 1rem;
+            width: 20px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .ethics-notice {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #ccc;
+            max-width: 800px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .approach-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .btn-whatsapp {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Aleph Menezes <span>Psicólogo</span></h1>
+                <div class="crp-info">CRP 10/10633</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#approach">Abordagem</a></li>
+                    <li><a href="#plans">Planos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Especialista em Relacionamentos e Comunicação</h2>
+            <p>Trabalhando com Análise do Comportamento Aplicada para melhorar relacionamentos e desenvolver habilidades de comunicação.</p>
+            <a href="https://wa.me/5591982614952" class="btn">Entre em contato</a>
+            <a href="https://wa.me/5591982614952" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3" alt="Dr. Aleph Menezes">
+                </div>
+                <div class="about-text">
+                    <h3>Aleph Menezes - CRP 10/10633</h3>
+                    <p>Psicólogo clínico com especialização em Análise do Comportamento Aplicada e foco em relacionamentos interpessoais e comunicação.</p>
+                    <p>Meu trabalho é baseado em evidências científicas e nos princípios éticos da profissão, com o objetivo de ajudar indivíduos, casais e famílias a melhorarem suas habilidades de comunicação e a qualidade de seus relacionamentos.</p>
+                    <p>CRP 10/10633 - Formado pela [insira instituição de formação] com pós-graduação em Análise do Comportamento Aplicada.</p>
+                    
+                    <div class="specialization">
+                        <h4>Especializações:</h4>
+                        <ul>
+                            <li>Relações interpessoais e comunicação</li>
+                            <li>Terapia de casal</li>
+                            <li>Análise do Comportamento Aplicada</li>
+                            <li>Orientacao familiar</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="#contact" class="btn">Agende uma conversa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Serviços</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Terapia Individual</h3>
+                    <p>Atendimento focado no desenvolvimento de habilidades de comunicação e melhoria dos relacionamentos interpessoais.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Terapia de Casal</h3>
+                    <p>Trabalho com casais para melhorar a comunicação, resolver conflitos e fortalecer a relação.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-house-user"></i>
+                    </div>
+                    <h3>Orientacao de Comunicação</h3>
+                    <p>Desenvolvimento de habilidades comunicativas para melhorar relações profissionais e pessoais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section id="approach" class="approach">
+        <div class="container">
+            <div class="section-title">
+                <h2>Abordagem Terapêutica</h2>
+            </div>
+            <div class="approach-content">
+                <div class="approach-item">
+                    <div class="approach-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="approach-text">
+                        <h3>Análise do Comportamento Aplicada</h3>
+                        <p>Abordagem baseada em evidências científicas que busca compreender e modificar comportamentos para melhorar relacionamentos e habilidades de comunicação.</p>
+                    </div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="approach-text">
+                        <h3>Terapia Focada na Comunicação</h3>
+                        <p>Métodos específicos para desenvolver habilidades de comunicação eficaz, escuta ativa e resolução de conflitos.</p>
+                    </div>
+                </div>
+                <div class="approach-item">
+                    <div class="approach-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="approach-text">
+                        <h3>Abordagem Sistêmica</h3>
+                        <p>Compreensão dos relacionamentos dentro de seus contextos e sistemas, identificando padrões que impactam a comunicação.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans" class="plans">
+        <div class="container">
+            <div class="section-title">
+                <h2>Modalidades de Atendimento</h2>
+            </div>
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Atendimento Individual</h3>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Sessões de 50 minutos</li>
+                            <li><i class="fas fa-check"></i> Foco em comunicação e relacionamentos</li>
+                            <li><i class="fas fa-check"></i> Horários flexíveis</li>
+                            <li><i class="fas fa-check"></i> Presencial ou online</li>
+                        </ul>
+                        <div class="plan-button">
+                            <a href="https://wa.me/5591982614952?text=Gostaria de informações sobre atendimento individual" class="btn">Saber mais</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Terapia de Casal</h3>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Sessões de 60 minutos</li>
+                            <li><i class="fas fa-check"></i> Melhoria da comunicação no relacionamento</li>
+                            <li><i class="fas fa-check"></i> Resolução de conflitos</li>
+                            <li><i class="fas fa-check"></i> Presencial ou online</li>
+                        </ul>
+                        <div class="plan-button">
+                            <a href="https://wa.me/5591982614952?text=Gostaria de informações sobre terapia de casal" class="btn">Saber mais</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3>Pacote Familiar</h3>
+                    </div>
+                    <div class="plan-body">
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Atendimento para múltiplos membros da família</li>
+                            <li><i class="fas fa-check"></i> Sessões individuais para cada membro</li>
+                            <li><i class="fas fa-check"></i> Cada membro terá um terapeuta diferente</li>
+                            <li><i class="fas fa-check"></i> Coordenação entre terapeutas</li>
+                        </ul>
+                        <div class="plan-note">
+                            <p><strong>Nota:</strong> No pacote familiar, cada membro será atendido por um terapeuta diferente, especializado em suas necessidades específicas.</p>
+                        </div>
+                        <div class="plan-button">
+                            <a href="https://wa.me/5591982614952?text=Gostaria de informações sobre o pacote familiar" class="btn">Saber mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="plan-disclaimer">
+                <p>Os valores são informados durante o primeiro contato, respeitando a legislação profissional e o Código de Ética.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ethics Section -->
+    <section id="ethics" class="ethics">
+        <div class="container">
+            <div class="section-title">
+                <h2>Compromisso Ético</h2>
+            </div>
+            <div class="ethics-content">
+                <div class="ethics-item">
+                    <h3>Sigilo Profissional</h3>
+                    <p>Todas as informações compartilhadas durante o processo terapêutico são protegidas por sigilo absoluto, conforme determina o Código de Ética Profissional do Psicólogo.</p>
+                </div>
+                <div class="ethics-item">
+                    <h3>Formação e Habilitação</h3>
+                    <p>Atuo exclusivamente dentro das minhas competências técnicas e formação, garantindo um serviço de qualidade e baseado em evidências científicas.</p>
+                </div>
+                <div class="ethics-item">
+                    <h3>Coordenação de Equipe</h3>
+                    <p>No pacote familiar, trabalho em coordenação com outros profissionais especializados, garantindo que cada membro da família receba o atendimento mais adequado às suas necessidades.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contato</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Entre em contato</h3>
+                    <ul class="contact-details">
+                        <li><i class="fas fa-phone"></i> <a href="tel:+5591982614952">(91) 98261-4952</a></li>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/5591982614952">WhatsApp</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:contato@alephmenezes.com.br">contato@alephmenezes.com.br</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Belém, Pará</li>
+                        <li><i class="fas fa-clock"></i> Segunda a Sexta: 8h às 18h</li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Seu nome" required>
+                        <input type="email" placeholder="Seu e-mail" required>
+                        <input type="tel" placeholder="Seu telefone">
+                        <textarea placeholder="Como posso ajudar?" required></textarea>
+                        <button type="submit" class="btn">Enviar mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/5591982614952"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <p>Aleph Menezes - Psicólogo | CRP 10/10633</p>
+                <div class="ethics-notice">
+                    <p>Este site segue as diretrizes do Código de Ética Profissional do Psicólogo (Resolução CFP nº 10/2005) e da Nota Técnica CFP nº 1/2022 sobre uso profissional de redes sociais.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (window.innerWidth < 768) {
+                        document.querySelector('nav ul').style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
